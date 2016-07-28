@@ -1,0 +1,10 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+	<include file="$(find zed_wrapper)/launch/zed.launch" /> 
+	<include file="$(find racecar)/launch/teleop.launch" />
+
+	<node name="Controler" pkg="bw_week3" type="pid6New.py" />
+	<node name="SpeedRegulator" pkg="bw_week3" type="speedTrap.py" />
+	<node name="BlobCamera" pkg="bw_week3" type="tracking_v2_7.py" />
+	<node name="Saftey" pkg="bw_week3" type="safty.py" />
+</launch>
