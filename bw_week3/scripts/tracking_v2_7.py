@@ -58,7 +58,7 @@ class ColorTracker:
 	    GreenName = "Green" + str(self.greenImageCount) + ".png"
 	    cv2.imwrite(GreenName, RGB)
 	    self.greenImageCount += 1
-	    self.pub_image.publish("Green")
+	    self.pub_image.publish("Green", GreenName)
 
         if ret == None: #CHECK RED
             red_lower = np.array([0, 160, 130])
@@ -69,7 +69,7 @@ class ColorTracker:
 		RedName = "Red" + str(self.redImageCount) + ".png"
 		cv2.imwrite(RedName, RGB)
 		self.redImageCount += 1
-		self.pub_image.publish("Red")
+		self.pub_image.publish("Red", RedName)
         
 	if ret == None: #CHECK Yellow
             yellow_lower = np.array([40, 85, 50])
@@ -77,10 +77,10 @@ class ColorTracker:
             ret = self.detect_color_blob(img, yellow_lower, yellow_upper)
 	    if ret != None: #yellow found
 	    	os.chdir('/home/racecar/challenge_photos/')
-	    	YellowName = "Red" + str(self.yellowImageCount) + ".png"
+	    	YellowName = "Yellow" + str(self.yellowImageCount) + ".png"
 	    	cv2.imwrite(YellowName, RGB)
 	    	self.yellowImageCount += 1
-	   	self.pub_image.publish("Yellow")
+	   	self.pub_image.publish("Yellow", YellowName)
 				
         if ret == None: #CHECK blue
             blue_lower = np.array([200, 30, 30])
@@ -88,10 +88,10 @@ class ColorTracker:
             ret = self.detect_color_blob(img, blue_lower, blue_upper)
 	    if ret != None: #blue found
 	        os.chdir('/home/racecar/challenge_photos/')
-	        BlueName = "Red" + str(self.blueImageCount) + ".png"
+	        BlueName = "Blue" + str(self.blueImageCount) + ".png"
 	        cv2.imwrite(BlueName, RGB)
 	        self.blueImageCount += 1
-	        self.pub_image.publish("Blue")
+	        self.pub_image.publish("Blue", BlueName)
 				
         if ret == None: #CHECK PINK
             pink_lower = np.array([300, 40, 80])
@@ -99,10 +99,10 @@ class ColorTracker:
             ret = self.detect_color_blob(img, pink_lower, pink_upper)
 	    if ret != None: #pink found
 	        os.chdir('/home/racecar/challenge_photos/')
-	        Kitty = "Red" + str(self.pinkImageCount)
+	        Kitty = "Image" + str(self.pinkImageCount)
 	        cv2.imwrite(Kitty, RGB)
 	        self.pinkImageCount += 1
-	        self.pub_image.publish("Kitty!!!!! IT'/S SO KINDA CUTE!!")
+	        self.pub_image.publish("Image", Kitty)
             color_code = 2
 
         if ret == None: #if no blob was found
